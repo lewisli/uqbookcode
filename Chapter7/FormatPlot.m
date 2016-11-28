@@ -9,7 +9,8 @@ ylabel(label_y,'FontSize',font_size);
 set(gcf,'color','w');
 axis square; axis tight;
 
-
-export_fig(['figures/' file_name],'-m4','-transparent');
+if (~isempty(file_name)) 
+    export_fig(['figures/' file_name],'-m4','-transparent');
+end
 end
 

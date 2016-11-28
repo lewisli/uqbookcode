@@ -63,7 +63,7 @@ FormatPlot(h2,'d','h','','kde_2d.png');
 conditional = density(:,cindex);
 forecast = ycoord(:,cindex);
 
-Area=trapz(forecast,conditional)
+Area=trapz(forecast,conditional);
 figure;
 h3=plot(forecast,conditional./Area,'LineWidth',2);
 FormatPlot(h3,'h','f(h|d_{obs})','','kde_conditional.png');
