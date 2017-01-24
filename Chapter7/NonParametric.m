@@ -51,19 +51,20 @@ MAX_XY = [max(d) max(h)];
 
 %%
 figure
+subplot(1,2,1);
 h2=surf(xcoord,ycoord,density,'LineStyle','none'), view([0,90]);
 grid on;
 hold on;
 plot3([dobs dobs],y_range,[1 1],'r','LineWidth',3)
-text(dobs+0.25,y_range(1)*0.85,1,'d_{obs}','FontSize',20)
+text(dobs+0.25,y_range(1)*0.85,1,'d_{obs}','FontSize',20,'color','r')
 FormatPlot(h2,'d','h','','kde_2d.png');
 
-%%
+subplot(1,2,2);
 [c,cindex] = min(abs(xcoord(1,:)-dobs))
 conditional = density(:,cindex);
 forecast = ycoord(:,cindex);
 
 Area=trapz(forecast,conditional);
-figure;
+%figure;
 h3=plot(forecast,conditional./Area,'LineWidth',2);
 FormatPlot(h3,'h','f(h|d_{obs})','','kde_conditional.png');

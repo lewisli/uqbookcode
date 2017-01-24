@@ -15,7 +15,7 @@ y = apartment_sizes;
 
 fitresult = fit(x,y,'poly1');
 p11 = predint(fitresult,x,0.95,'observation','off');
-c1 = 
+
 fitted_line = x*fitresult.p1 + fitresult.p2;
 
 
