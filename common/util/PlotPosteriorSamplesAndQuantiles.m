@@ -24,7 +24,11 @@ h0 = plot(ForecastStruct.time,PriorQuantiles','color',[0.5 0.5 0.5],...
 h2 = plot(ForecastStruct.time,ForecastStruct.data(TruthRealization,:),...
     'r','LineWidth',3);
 h3 = plot(ForecastStruct.time,PosteriorQuantiles,'b--','LineWidth',3);
+<<<<<<< HEAD
 legend([h0(1), h3(1),h2(1)],'Prior','Posterior','Reference');
+=======
+legend([h0(1), h2(1),h3(1)],'Prior','Reference','SIR-CFCA');
+>>>>>>> 7a565c5bdd8e37cc6cc93a81f492726ba9c9ea2b
 xlabel('t(days)');ylabel(['Forecasted: ' ForecastStruct.name]);axis square;
 title('Quantiles');
 set(gca,'FontSize',18);
@@ -50,7 +54,11 @@ end
 h3=plot(ForecastStruct.time,ForecastStruct.data(TruthRealization,:),...
     'color','r','LineWidth',3); axis square;
 set(gca,'FontSize',18);
+<<<<<<< HEAD
 legend([h1, h2,h3],'Prior','Posterior','Reference');
+=======
+legend([h1, h2,h3],'Prior','SIR-CFCA','Reference');
+>>>>>>> 7a565c5bdd8e37cc6cc93a81f492726ba9c9ea2b
 xlabel('t(days)');ylabel(['Forecasted: ' ForecastStruct.name]);axis square;
 title('Posterior Samples');
 axis tight;

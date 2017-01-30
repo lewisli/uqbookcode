@@ -54,7 +54,11 @@ predPCA = ComputeHarmonicScores(ForecastStruct,PlotLevelPCA);
 
 
 %% Plot Eigenvalue Functions
+<<<<<<< HEAD
 MinEigenValues = 3;
+=======
+MinEigenValues = 2;
+>>>>>>> 7a565c5bdd8e37cc6cc93a81f492726ba9c9ea2b
 
 % Get number of required harmonics required for forecasts
 nHarmPred = GetNumHarmonics(predPCA{1}, MinEigenValues,EigenTolerance);
@@ -91,7 +95,11 @@ end
 % Poor naming choice by FDA package... we need to remove it from the path
 % in order to run PCA
 rmpath('../../thirdparty/fda_matlab');
+<<<<<<< HEAD
 rmpath('../../common/fda_matlab/');
+=======
+
+>>>>>>> 7a565c5bdd8e37cc6cc93a81f492726ba9c9ea2b
 DfStar = [Df; dobs_f];
 [~,score,~] = pca(DfStar);
 

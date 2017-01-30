@@ -26,7 +26,11 @@ hold on;
 scatter(D(:,1),H(:,1),ScatterSize,'filled')
 plot([DObs(1),DObs(1)],[min(H(:,1)),max(H(:,1))],'r-',...
     'LineWidth',ObservedLineThickness);
+<<<<<<< HEAD
 text(DObs(1) + abs(DObs(1))*0.05,min(H(:,1)) + ...
+=======
+text(DObs(1) + abs(DObs(1))*0.25,min(H(:,1)) + ...
+>>>>>>> 7a565c5bdd8e37cc6cc93a81f492726ba9c9ea2b
     abs(min(H(:,1)))*0.25,'d_{obs}','Fontweight','b','FontSize',FontSize);
 xlabel(['d_',num2str(1),'^' Type],'FontSize',FontSize);
 ylabel(['h_',num2str(1),'^' Type],'FontSize',FontSize);
@@ -53,6 +57,7 @@ axis square; axis tight;
 
 subplot(133);
 hold on;
+<<<<<<< HEAD
 scatter(D(:,3),H(:,3),ScatterSize,'filled')
 plot([DObs(3),DObs(3)],[min(H(:,3)),max(H(:,3))],'r-',...
     'LineWidth',ObservedLineThickness);
@@ -61,6 +66,16 @@ text(DObs(3) + abs(DObs(3))*0.25,min(H(:,3)) + ...
 xlabel(['d_',num2str(3),'^' Type],'FontSize',FontSize);
 ylabel(['h_',num2str(3),'^' Type],'FontSize',FontSize);
 coeff = corrcoef(D(:,3),H(:,3));
+=======
+scatter(D(:,1),H(:,2),ScatterSize,'filled')
+plot([DObs(1),DObs(1)],[min(H(:,2)),max(H(:,2))],'r-',...
+    'LineWidth',ObservedLineThickness);
+text(DObs(1) + abs(DObs(1))*0.25,min(H(:,2)) + ...
+    abs(min(H(:,2)))*0.25,'d_{obs}','Fontweight','b','FontSize',FontSize);
+xlabel(['d_',num2str(1),'^' Type],'FontSize',FontSize);
+ylabel(['h_',num2str(2),'^' Type],'FontSize',FontSize);
+coeff = corrcoef(D(:,1),H(:,2));
+>>>>>>> 7a565c5bdd8e37cc6cc93a81f492726ba9c9ea2b
 % title(['d^' Type '_1 vs h^' Type '_2. \rho = ' ...
 %     num2str(coeff(2)) ],'FontSize',FontSize);
 set(gca,'FontSize',FontSize);

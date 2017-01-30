@@ -142,7 +142,11 @@ if (all(eig(C_posterior) >= 0))
             hold on;
             scatter(Hc(:,1),Hc(:,2),100,[0.5 0.5 0.5]);
             scatter(PosteriorSamples(1,1:NumEstimates),...
+<<<<<<< HEAD
                 PosteriorSamples(2,1:NumEstimates),100,'b','filled');
+=======
+                PosteriorSamples(2,1:NumEstimates),100,'r','filled');
+>>>>>>> 7a565c5bdd8e37cc6cc93a81f492726ba9c9ea2b
             hlegend = legend('Prior Models','Posterior Samples');
             set(hlegend,'fontsize',FontSize-4);
             set(hlegend,'location','best');

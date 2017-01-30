@@ -17,14 +17,22 @@ num_wells = length(FunctionalStruct);
 norm_scores = [];
 
 % FPCA library has poor choice of naming convention, need to remove for PCA
+<<<<<<< HEAD
 rmpath('../../common/fda_matlab');
+=======
+rmpath('../../thirdparty/fda_matlab');
+>>>>>>> 7a565c5bdd8e37cc6cc93a81f492726ba9c9ea2b
 
 for i = 1:num_wells
     % Perform regular PCA on each well
     [coeff,score,latent] = pca(FunctionalStruct{i}.harmscr);
     
     % Normalize the PCA scores by the first latent variable
+<<<<<<< HEAD
     norm_score = FunctionalStruct{i}.harmscr/latent(1);
+=======
+    norm_score = score/latent(1);
+>>>>>>> 7a565c5bdd8e37cc6cc93a81f492726ba9c9ea2b
     
     % Concanate the norm_score
     norm_scores = [norm_scores norm_score];
