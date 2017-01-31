@@ -144,21 +144,6 @@ axis square;
 axis tight;
 export_fig('-m3',[save_path 'D_obs.png']);
 
-% %%
-%
-%
-% h=figure('Units', 'normalized', 'Position', [0,0,1,1]);
-% for i= 1:2
-%     subplot(1,2,i);
-%     imagesc(reshape(Eigenimages(:,end-i+1),map_size));
-%     title(['Eigenimage ' num2str(i)],'FontSize',FontSize);
-%     set(gcf,'color','w');
-%     set(gca,'FontSize',FontSize);
-%     colorbar;
-%     axis square;
-%     axis tight;
-% end
-%
 
 %%
 close all;

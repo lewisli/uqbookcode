@@ -1,9 +1,6 @@
 *.png
-<<<<<<< HEAD
 *.asv
 *.m~
-*DS_Store*
 figures/
-=======
 *.DS_Store*
->>>>>>> 7a565c5bdd8e37cc6cc93a81f492726ba9c9ea2b
+

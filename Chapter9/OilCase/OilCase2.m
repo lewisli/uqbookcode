@@ -1,6 +1,4 @@
 % OilCase2.m
-%
-<<<<<<< HEAD
 % Generate figures for Chapter 9 Oil Case 2: Forecasting Saturation Maps
 %
 % Author: Lewis Li (lewisli@stanford.edu)
@@ -12,27 +10,12 @@ case_name = 'OilCase2';
 input_data_path = 'C:\Users\Lewis Li\ResearchData\LibyanCase\Situation3\';
 figure_output_path = 'C:\Users\Lewis Li\Documents\Github\uqbookcode/Chapter9\figures\';
 
-=======
-% Generate figures for Chapter 9 Oil Case 1: Forecasting Saturation Maps
-%
-% Author: Lewis Li (lewisli@stanford.edu)
-% Original Date: December 28th 2016
-% Last Modified: Janurary 18th 2017
-
-%% Paths
-case_name = 'OilCase2';
-input_data_path = '/Volumes/ScratchExternal/ResearchData/LibyanCase/';
-figure_output_path = '/Volumes/ScratchExternal/Github/uqbookcode/Chapter9/figures/';
->>>>>>> 7a565c5bdd8e37cc6cc93a81f492726ba9c9ea2b
 
 addpath('../../common/cfca');
 addpath('../../common/util');
 addpath('../../common/export_fig');
 addpath('../../common/fda_matlab/');
-<<<<<<< HEAD
-=======
 addpath('../../common/likelihood_continuous/');
->>>>>>> 7a565c5bdd8e37cc6cc93a81f492726ba9c9ea2b
 
 % Create folder for saving figures
 save_path = [figure_output_path case_name '/'];
@@ -41,39 +24,22 @@ if ~exist(save_path, 'dir')
 end
 
 fontsize = 22;
-<<<<<<< HEAD
+
 
 %% 1a) Load Production Profile (Data Variable)
 load([input_data_path 'results\Situation3.mat']);
-=======
 truth_realization = 1;
 
 %% 1a) Load Production Profile (Data Variable)
 load([input_data_path 'Situation1/results/SimulationResults.mat']);
->>>>>>> 7a565c5bdd8e37cc6cc93a81f492726ba9c9ea2b
-
-ForecastColumn = 4;
-HistoricalColumn = 4;
 
 % This is the time step that we divide the forecast and history
 TimeColumn = 2;
-<<<<<<< HEAD
-ForecastObjName={'Field'}; % Not used
-
-% We will use the production rates for the 5 existing producers as the data
-% variable (up to 4000 days)
-HistoricalObjName = {'P1','P2','P3','P4','P5'};
-EndTime = 4000;
-
-ForecastSpline = [4 20];
-HistoricalSpline = [4 20];
-ForecastStart = 160;
-HistoricalEnd = 400;
-NumTimeSteps = 400;
+ForecastColumn = 4;
+HistoricalColumn = 4;
 
 % Interpolate the production rates from the 5 wells to be on a linearly
 % spaced time domain
-=======
 NumTimeSteps = 400;
 EndTime = 4000;
 ForecastObjName={'P5'}; % Not used
@@ -83,14 +49,12 @@ HistoricalSpline = [4 20];
 ForecastStart = 160;
 HistoricalEnd = 160;
 
->>>>>>> 7a565c5bdd8e37cc6cc93a81f492726ba9c9ea2b
 [HistoricalStruct, ~] = GenerateDataStructsWithInterpolation(Data, ...
     PropertyNames, ForecastColumn, HistoricalColumn, TimeColumn, ...
     HistoricalEnd,ForecastStart, NumTimeSteps, ForecastSpline, ...
     HistoricalSpline, ForecastObjName, HistoricalObjName, EndTime);
 
 % Plot Production Profiles
-<<<<<<< HEAD
 TruthRealization = 145;
 h1  = PlotInputResponse(HistoricalStruct,TruthRealization,fontsize,save_path);
 
@@ -178,12 +142,6 @@ histPCA = ComputeHarmonicScores(HistoricalStruct,0);
 
 %% 4. Perform Regression
 addpath('../../common/fda_matlab/');
-% TruthRealization = 122;
-% TruthRealization = 126;
-% TruthRealization = 2;
-% TruthRealization = 157;
-% TruthRealization = 145;
-%TruthRealization = randi(num_reals)
 
 AvailableRealizations = setdiff(1:num_reals,TruthRealization);
 NumHistoricalResponses = 5;
@@ -391,37 +349,6 @@ c = colorbar('southoutside');
 c.Label.String = 'Variance';
 export_fig('-m3',[save_path 'PosteriorVariance.png']);
 
-%
-% subplot(122);
-% imagesc(reshape(posterior_var,map_size));
-% title('Truth','fontsize',fontsize);
-% set(gcf,'color','w');
-% set(gca,'fontsize',fontsize);
-% axis equal; axis tight;
-% hold on;
-% caxis([min_sat,max_sat])
-% legend('Existing Producers','Existing Injectors','fontsize',23);
-%
-% hp3 = get(subplot(1,2,1),'Position');
-% hp4 = get(subplot(1,2,2),'Position');
-% c = colorbar('Position', [hp3(1)  hp3(2)  hp4(4)-0.04  0.05],'location',...
-%     'southoutside');
-% c.Label.String = 'Reservoir Quality';
-% export_fig('-m3',[save_path 'posterior_forecast.png']);
-
-
-%%
-% num_real_plot = 4;
-% h=figure('Units', 'normalized', 'Position', [0,0,1,1]);
-% for i = 1:num_real_plot
-%     real_no = randi(num_reals);
-%     ax(i)=subplot(2,2,i);
-%     imagesc(reshape(norm_saturation_maps(:,real_no),map_size));
-%     set(gca,'fontsize',fontsize);
-%     title(['Real : ' num2str(real_no)],'fontsize',fontsize);
-%     axis image;
-% end
-
 
 %%
 plot(cumsum(flipud(diag(D)))/sum(diag(D)),'linewidth',3);
@@ -431,7 +358,3 @@ ylabel('Proportion of variance','fontsize',fontsize);
 set(gca,'fontsize',fontsize);
 set(gcf,'color','w');
 
-=======
-h1  = PlotInputResponse(HistoricalStruct,truth_realization,...
-    fontsize);
->>>>>>> 7a565c5bdd8e37cc6cc93a81f492726ba9c9ea2b

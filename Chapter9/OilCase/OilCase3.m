@@ -1,5 +1,13 @@
+% OilCase2.m
+% Generate figures for Chapter 9 Oil Case 3: Forecasting Future Rates
+%
+% Author: Lewis Li (lewisli@stanford.edu)
+% Original Date: December 30th 2016
+% Last Modified: Janurary 30th 2017
+close all; clear all; clc;
 results_path = 'C:\Users\Lewis Li\ResearchData\LibyanCase\Situation3\results\Situation3.mat';
 load(results_path);
+SaveFolder = ['../figures/OilCase3/'];
 NumRealizations = 500;
 
 %% Generate Data Structs

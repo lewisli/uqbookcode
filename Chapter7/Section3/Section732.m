@@ -85,6 +85,7 @@ export_fig('-m3',[SaveFolder '/prior_inj.png']);
 
 
 %% Perform dimension reduction on historical data
+addpath('../../common/fda_matlab/');
 truth_real = 258;
 %truth_real = 199;
 

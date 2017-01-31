@@ -54,11 +54,7 @@ predPCA = ComputeHarmonicScores(ForecastStruct,PlotLevelPCA);
 
 
 %% Plot Eigenvalue Functions
-<<<<<<< HEAD
 MinEigenValues = 3;
-=======
-MinEigenValues = 2;
->>>>>>> 7a565c5bdd8e37cc6cc93a81f492726ba9c9ea2b
 
 % Get number of required harmonics required for forecasts
 nHarmPred = GetNumHarmonics(predPCA{1}, MinEigenValues,EigenTolerance);
@@ -79,33 +75,8 @@ Hf = harmscrpred(AvailableRealizations,1:nHarmPred);
 Df = zeros(length(AvailableRealizations),nHarmHist*NumHistoricalResponses);
 dobs_f = zeros(1,nHarmHist*NumHistoricalResponses);
 
-% Iterate over each historical response (ex: P1, P2)
-for i = 1:NumHistoricalResponses
-    harmscrhist=histPCA{i}.harmscr;
-    
-    % Need to re-arrange harmonic scores into Df such that the first
-    % eigenvalues are placed in first
-    for j = 1:nHarmHist
-        Df(:,(i-1)*nHarmHist + j) = harmscrhist(AvailableRealizations,j);
-        dobs_f(:,(i-1)*nHarmHist + j) = harmscrhist(TruthRealization,j);
-    end
-end
-
-% Run PCA On Df
-% Poor naming choice by FDA package... we need to remove it from the path
-% in order to run PCA
-rmpath('../../thirdparty/fda_matlab');
-<<<<<<< HEAD
-rmpath('../../common/fda_matlab/');
-=======
-
->>>>>>> 7a565c5bdd8e37cc6cc93a81f492726ba9c9ea2b
-DfStar = [Df; dobs_f];
-[~,score,~] = pca(DfStar);
-
-% Project dobs_f onto PCA basis
-dobs_fpca = score(end,:);
-score(end,:) = [];
+% Perform Mixed PCA
+[score, dobs_fpca] = MixedPCA(histPCA,TruthRealization);
 
 % Perform CCA
 Df = score;
@@ -142,15 +113,16 @@ C_T = DDiff*DDiff'/length(Dc);
 if epsilon ==0
     C_Dc = zeros(size(C_T));
 else
-    C_Df = EstimateFunctionalErrorCovariance( HistoricalStruct,EigenTolerance,epsilon);
+    C_Df = EstimateFunctionalErrorCovariance( HistoricalStruct,...
+        EigenTolerance,epsilon);
     C_Dc = A'*C_Df*A;
 end
 
 
 % Perform Gaussian Regression
-mu_posterior = H_CG_Mean + C_H*G'*pinv(G*C_H*G' + C_T+C_Dc)*(dobs_c'-G*H_CG_Mean);
+mu_posterior = H_CG_Mean + C_H*G'*pinv(G*C_H*G' + C_T+C_Dc)*(...
+    dobs_c'-G*H_CG_Mean);
 C_posterior = C_H - C_H*G'*inv(G*C_H*G' + C_T+C_Dc)*G*C_H;
-%C_posterior = inv(G'*pinv(C_T)*G + inv(C_H));
 
 end
 
