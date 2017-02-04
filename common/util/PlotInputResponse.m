@@ -53,14 +53,14 @@ for i = 1:NumResponses
     axis tight;
     
     hlegend = legend([h1],'Prior');
-    set(hlegend,'Location','southwest');
+    set(hlegend,'Location','northeast');
     
     
     if (TruthRealization>0)
         h2 = plot(DataStruct.time, ...
             DataStruct.data(TruthRealization,:,i)','r','LineWidth',3);
         hlegend = legend([h1,h2],'Prior','Observed');
-        set(hlegend,'Location','southwest');
+        set(hlegend,'Location','northeast');
     end
     
     if (mod(i,MaxFiguresPerPage) == 0 || i == NumResponses)
